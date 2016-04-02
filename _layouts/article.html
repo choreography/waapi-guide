@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, width=device-width">
+	<title>Web Animations API Guide</title>
+	
+	<!-- Stylesheets -->
+	<style>
+		/* Fonts */
+		@font-face { font-family: Inconsolata; src: url(/assets/fonts/Inconsolata-Regular.ttf); }
+		@font-face { font-family: Inconsolata; font-weight: bold; src: url(/assets/fonts/Inconsolata-Bold.ttf); }
+		@font-face { font-family: Lato; font-weight: 100; font-style: normal; src: url(/assets/fonts/LatoLatinHair-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 100; font-style: italic; src: url(/assets/fonts/LatoLatinHair-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 200; font-style: normal; src: url(/assets/fonts/LatoLatinThin-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 200; font-style: italic; src: url(/assets/fonts/LatoLatinThin-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 300; font-style: normal; src: url(/assets/fonts/LatoLatinLight-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 300; font-style: italic; src: url(/assets/fonts/LatoLatinLight-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 400; font-style: normal; src: url(/assets/fonts/LatoLatin-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 400; font-style: italic; src: url(/assets/fonts/LatoLatin-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 500; font-style: normal; src: url(/assets/fonts/LatoLatinMed-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 500; font-style: italic; src: url(/assets/fonts/LatoLatinMed-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 600; font-style: normal; src: url(/assets/fonts/LatoLatinSemBd-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 600; font-style: italic; src: url(/assets/fonts/LatoLatinSemBd-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 700; font-style: normal; src: url(/assets/fonts/LatoLatin-Bold.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 700; font-style: italic; src: url(/assets/fonts/LatoLatin-BoldItalic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 800; font-style: normal; src: url(/assets/fonts/LatoLatinExtBd-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 800; font-style: italic; src: url(/assets/fonts/LatoLatinExtBd-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 900; font-style: normal; src: url(/assets/fonts/LatoLatinBlack-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 900; font-style: italic; src: url(/assets/fonts/LatoLatinBlack-Italic.woff) format('woff'); }
+		@font-face { font-family: Material; src: local('Material Icons'), local('MaterialIcons-Regular'), url(/assets/fonts/MaterialIcons-Regular.woff2) format('woff2'), url(/assets/fonts/MaterialIcons-Regular.woff) format('woff'), url(/assets/fonts/MaterialIcons-Regular.ttf) format('truetype'); }
+	</style>
+	<link rel="stylesheet" href="/css/unstyle.css">
+	<link rel="stylesheet" href="/css/guide.css">
+	
+	<!-- Scripts -->
+	<script src="/js/poly.js"></script>
+	<script src="/js/web-animations-next.min.js"></script>
+	<script src="/js/acorn.js"></script>
+	<script src="/js/explanation.js"></script>
+
+
+<body>
+	<!-- Markup -->
+	<nav class="global">
+		<h1><a href="/">Web Animations API Guide</a></h1>
+		<div class="column"><h2>Core</h2>
+			<ul>
+				<li><a data-icon="playlist_play">Animation</a>
+				<li><a data-icon="timeline">Timeline</a>
+			</ul>
+		</div>
+		<div class="column"><h2>Effects</h2>
+			<ul>
+				<li><a href="/effects/keyframe/" data-icon="linear_scale" {% if page.url == "/effects/keyframe/" %}class="current"{% endif %}>KeyframeEffect</a>
+				<li><a data-icon="format_list_bulleted">GroupEffect</a>
+				<li><a data-icon="format_list_numbered">SequenceEffect</a>
+			</ul>
+		</div>
+		<div class="column"><h2>Extensions</h2>
+			<ul>
+				<li><a data-icon="access_time">document.timeline</a>
+				<li><a>document.getAnimations</a>
+				<li><a data-icon="gesture">element.animate</a>
+				<li><a>element.getAnimations</a>
+			</ul>
+		</div>
+	</nav>
+	{{content}}

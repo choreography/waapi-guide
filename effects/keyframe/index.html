@@ -1,0 +1,248 @@
+---
+layout: article
+---
+<article id="why">
+	<div class="mirror">
+		<h1>
+			KeyframeEffect
+			<a href="#why" class="quicklink">link</a>
+		</h1>
+		<div class="prose">
+			<p>
+				Tweens CSS properties of an element over time across an array of keyframes.
+			</p>
+			<p>
+				They can be nested within <a class="inline" hreffy="/animations/">Animations</a>, <a class="inline" hreffy="/effects/group/">Groups</a> and <a class="inline" hreffy="/effects/sequence/">Sequences</a>.
+			</p>
+		</div>
+		<div class="code">
+			<code class="block javascript spec">
+				new KeyframeEffect(<high-light group="target">target</high-light>, <high-light group="frames">frames</high-light>, <high-light group="options">options</high-light>);
+			</code>
+		</div>
+	</div>
+</article>
+<article id="how">
+	<div class="mirror">
+		<h1>
+			Arguments
+			<a href="#how" class="quicklink">link</a>
+		</h1>
+		<div class="prose">
+			<dl class="argument">
+				<high-light group="target">
+					<dt>
+						<a href="#target" class="quicklink">link</a>
+						target
+					</dt>
+					<dd>
+						<p>The Element being animated.</p>
+						<p>Can be null for animations that don't target an element but for example are Animation-triggered sounds.</p>
+					</dd>
+				</high-light>
+
+				<high-light group="frames">
+					<dt>
+						<a href="#frames" class="quicklink">link</a>
+						frames
+					</dt>
+					<dd>Array of Keyframes to use.</dd>
+				</high-light>
+				<high-light group="options">
+					<dt>
+						<a href="#options" class="quicklink">link</a>
+						options
+					</dt>
+					<dd>
+						<p>Either a Number specifying duration in milliseconds OR an Object specifying timing &amp; behaviour.</p>
+						<p>For the full list of Object properties see <a class="inline" hreffy="/effects/keyframe/options/">KeyframeEffectOptions</a></p>
+					</dd>
+				</high-light>
+			</dl>
+		</div>
+		<div class="code">
+			<code class="block javascript spec">
+				<high-light group="target">var target = Element || null;</high-light>
+				<high-light group="frames">var frames = [Keyframe, Keyframe /*, ... */];</high-light>
+				<high-light group="options">var options = Number || <a class="inline" hreffy="/effects/keyframe/options/">KeyframeEffectOptions</a>;</high-light>
+			</code>
+			<code class="block javascript">
+				<high-light group="target">var target = document.querySelector('div.target');</high-light>
+
+
+				<high-light group="frames">var keyframe = {
+					opacity: 0.5 // Object with CSS properties basically
+				};</high-light>
+
+
+				<high-light group="frames">var frames = [
+					{ opacity: 0 },
+					{ opacity: 1 }
+				];</high-light>
+
+
+				<high-light group="options">var options = {
+					duration: 2000, // in ms
+					delay: 400, // in ms
+					fill: 'forwards', // keeps css styles at end of anim
+					easing: 'ease-out' // smooth out at end
+				};</high-light>
+			</code>
+		</div>
+	</div>
+</article>
+<article id="what">
+	<h1>
+		Examples
+		<a href="#what" class="quicklink">link</a>
+	</h1>
+	<section class="sandbox expandable" id="fadeout">
+		<nav>
+			<h1>
+				Fade Out
+				<a href="#fadeout" class="quicklink">link</a>
+			</h1>
+			<button class="run">Run</button>
+			<a class="edit" target="_blank" href="http://jsbin.com/qixavo/2/edit?js,output">
+				Edit on <span class="jsbin">JS Bin</span>
+			</a>
+		</nav>
+		<main>
+			<div class="foo"></div>
+		</main>
+		<style>
+			section#fadeout main {
+				height: 100px;
+			}
+
+			div.foo {
+				width: 16px;
+				height: 16px;
+				border-radius: 100%;
+				background: hsl(215, 100%, 50%);
+			}
+
+			div.foo::after {
+				position: relative;
+				left: 16px;
+				bottom: 16px;
+				content: 'div.foo';
+				padding: 2px 8px;
+				border-radius: 16px 16px 16px 0;
+				background: hsl(215, 10%, 15%);
+				color: hsl(215, 10%, 95%);
+				font: 12px/1.2 Inconsolata;
+				text-shadow: 0 1px 0 black;
+				vertical-align: top;
+			}
+		</style>
+		<script class="block expandable" type="text/javascript">
+			var foo = document.querySelector('div.foo'); // our little test element
+
+			/// Keyframes of the animation,
+			// Move to the right speeding up and fade out quickly near end
+			var frames = [
+				{
+					transform: 'translateX(0px)',
+					opacity: 1
+				},
+				{
+					transform: 'translateX(30px)',
+					opacity: 0.9
+				},
+				{
+					transform: 'translateX(90px)',
+					opacity: 0
+				}
+			];
+
+			var options = {
+				duration: 400, // 0.4s
+				easing: 'ease-in', // We ease into the animation slowly
+				fill: 'forwards' // Keep the styles of the last frame of the animation
+			};
+
+			/// Construct our effect node
+			var fadeout = new KeyframeEffect(foo, frames, options);
+
+			/// On clicking button.run, play our effect!
+			document.querySelector('#fadeout button.run')
+			.addEventListener('click', function playEffect(event) {
+				document.timeline.play(fadeout);
+			});
+		</script>
+	</section>
+
+	<section class="sandbox expandable" id="movement">
+		<nav>
+			<h1>
+				Movement
+				<a href="#movement" class="quicklink">link</a>
+			</h1>
+			<button class="run">Run</button>
+			<a class="edit" target="_blank" href="http://jsbin.com/gaboze/4/edit?js,output">
+				Edit on <span class="jsbin">JS Bin</span>
+			</a>
+		</nav>
+		<main>
+			<div class="bar"></div>
+		</main>
+		<style>
+			section#movement main {
+				height: 200px;
+			}
+
+			div.bar {
+				width: 16px;
+				height: 16px;
+				border-radius: 100%;
+				background: hsl(215, 100%, 50%);
+			}
+
+			div.bar::after {
+				position: relative;
+				left: 16px;
+				bottom: 16px;
+				content: 'div.bar';
+				padding: 2px 8px;
+				border-radius: 16px 16px 16px 0;
+				background: hsl(215, 10%, 15%);
+				color: hsl(215, 10%, 95%);
+				font: 12px/1.2 Inconsolata;
+				text-shadow: 0 1px 0 black;
+				vertical-align: top;
+			}
+		</style>
+		<script class="block expandable" type="text/javascript">
+			var bar = document.querySelector('div.bar'); // our little test element
+
+			/// Keyframes of the animation,
+			// All over the place!
+			var frames = [
+				// All over the place!
+				{ transform: 'translate(-170px, -70px)' },
+				{ transform: 'translate(-200px, 80px)' },
+				{ transform: 'translate(-100px, 40px)' },
+				{ transform: 'translate(130px, 70px)' },
+				{ transform: 'translate(-170px, -70px)' },
+			];
+
+			var options = {
+				duration: 12000, // 12sec
+				iterations: Infinity // and beyond!
+			};
+
+			/// Construct our effect node
+			var movement = new KeyframeEffect(bar, frames, options);
+
+			/// On clicking button.run, play our effect!
+			document.querySelector('#movement button.run')
+			.addEventListener('click', function playEffect(event) {
+				document.timeline.play(movement);
+			});
+		</script>
+	</section>
+	<section class="sandbox suggest">
+		Any ideas? Create a JSBin suggestion and/or tweet to <a class="inline" target="_blank" href="https://twitter.com/Nexii">@Nexii</a>
+	</section>
+</article>
