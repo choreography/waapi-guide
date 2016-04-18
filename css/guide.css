@@ -163,13 +163,16 @@ nav.global a:active::after {
 	transition-duration: 0ms;
 }
 
-
-nav.global a[data-icon]::before {
+nav.global a svg.icon {
 	position: absolute;
-	bottom: 3px;
+	top: 0;
+	bottom: 0;
 	right: 100%;
-	font: 24px/1 Material;
-	content: attr(data-icon);
+	height: 100%;
+	padding: 4px 2px 2px;
+	border-radius: 4px 0 0 4px;
+	margin-right: -4px;
+	fill: currentColor;
 }
 
 nav.global a:not([href]) {
@@ -182,11 +185,7 @@ nav.global a.current {
 	color: white;
 }
 
-nav.global a[data-icon].current::before {
-	bottom: 0;
-	padding: 4px 8px 3px;
-	margin: 0px -8px;
-	border-radius: 4px;
+nav.global a.current svg.icon {
 	background: hsl(215, 100%, 50%);
 }
 
@@ -519,14 +518,14 @@ section.sandbox nav button {
 	font: 18px/1 Lato;
 }
 
-section.sandbox nav button.run::before {
+/* section.sandbox nav button.run::before {
 	display: inline-block;
 	height: 32px;
 	margin-right: 5px;
 	content: 'play_arrow';
 	font: 24px/32px Material;
 	vertical-align: -5px;
-}
+} */
 
 a.edit {
 	position: relative;
@@ -687,9 +686,9 @@ article a.quicklink {
 	padding: .25em .75em;
 	margin: -.25em -.75em;
 	border-radius: 16px;
-	font-style: normal;
+/* 	font-style: normal;
 	font-family: Material;
-	color: hsl(200, 100%, 40%);
+	color: hsl(200, 100%, 40%); */
 	vertical-align: bottom;
 	opacity: 0;
 }
@@ -763,6 +762,14 @@ article a:not([href]) {
 
 
 article#why {}
+
+div.notice {
+	padding: 3px 10px;
+	border-left: 10px solid hsl(0, 100%, 50%);
+	margin: 10px 0;
+}
+
+
 article#how {}
 article#what {
 	margin-bottom: 400px;

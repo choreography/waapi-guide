@@ -1,0 +1,86 @@
+---
+layout: article
+---
+<article id="why">
+	<div class="mirror">
+		<h1>
+			AnimationTimeline
+			<a href="#why" class="quicklink">§</a>
+		</h1>
+		<div class="prose">
+			<p>
+				Provides a source of time for <a class="inline" href="/core/animation/">Animations</a>.
+			</p>
+		</div>
+		<div class="code">
+			<code class="block webidl spec">
+				/*
+				
+				interface AnimationTimeline {
+					readonly attribute double? <high-light group="currentTime">currentTime</high-light>;
+				}
+				
+				(need to update the parser to allow WebIDL)
+				*/
+			</code>
+		</div>
+	</div>
+</article>
+<!--
+	This should work theoretically?
+
+class CustomTimeline extends AnimationTimeline { get currentTime() { return 750 } }
+var foobar = Animation(new KeyframeEffect($0, [ {opacity: 0 }, { opacity: 1 }], { duration: 1500, iterations: Infinity }), CustomTimeline);
+	
+-->
+
+<!-- <article id="how">
+	<div class="mirror">
+		<h1>
+			Arguments
+			<a href="#how" class="quicklink">§</a>
+		</h1>
+		<div class="prose">
+			<dl class="argument">
+				<high-light group="target">
+					<dt>
+						<a href="#target" class="quicklink">§</a>
+						target
+					</dt>
+					<dd>
+						<p>The Element being animated.</p>
+						<p>Can be null for animations that don't target an element but for example are Animation-triggered sounds.</p>
+					</dd>
+				</high-light>
+
+				<high-light group="frames">
+					<dt>
+						<a href="#frames" class="quicklink">§</a>
+						frames
+					</dt>
+					<dd>Array of Keyframes to use.</dd>
+				</high-light>
+				<high-light group="options">
+					<dt>
+						<a href="#options" class="quicklink">§</a>
+						options
+					</dt>
+					<dd>
+						<p>Either a Number specifying duration in milliseconds OR an Object specifying timing &amp; behaviour.</p>
+						<p>For the full list of Object properties see <a class="inline" hreffy="/effects/keyframe/options/">KeyframeEffectOptions</a></p>
+					</dd>
+				</high-light>
+			</dl>
+		</div>
+		<div class="code">
+			<code class="block javascript spec">
+				<high-light group="target">var target = Element || null;</high-light>
+				<high-light group="frames">var frames = [Keyframe, Keyframe /*, ... */];</high-light>
+				<high-light group="options">var options = Number || <a class="inline" hreffy="/effects/keyframe/options/">KeyframeEffectOptions</a>;</high-light>
+			</code>
+			<code class="block javascript">
+				
+			</code>
+		</div>
+	</div>
+</article> -->

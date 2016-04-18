@@ -1,0 +1,90 @@
+---
+layout: article
+---
+<article id="why">
+	<div class="mirror">
+		<h1>
+			GroupEffect
+			<a href="#why" class="quicklink">§</a>
+		</h1>
+		<div class="prose">
+			<p>
+				Groups other effects together and aligns them so they all start together at the same time.
+			</p>
+			<p>
+				Can be nested within other Groups and <a class="inline" href="/effects/sequence/">Sequences</a>.<br>
+				Can also nest <a class="inline" href="/effects/keyframe/">Keyframes</a>.
+			</p>
+		</div>
+		<div class="code">
+			<code class="block javascript spec">
+				new GroupEffect(<high-light group="effects">effects</high-light>, <high-light group="options">options</high-light>);
+			</code>
+		</div>
+	</div>
+
+	<div class="notice">
+		<p>
+			GroupEffects have been removed from Level 1 of Web Animations and are planned to be reintroduced in Level 2 of the spec.<br>
+			However they are implemented in the Web Animations polyfill.<br>
+			I would recommend to be careful and use this without the options argument until L2 is drafted to work out the quirks.
+		</p>
+	</div>
+</article>
+<article id="how">
+	<div class="mirror">
+		<h1>
+			Arguments
+			<a href="#how" class="quicklink">§</a>
+		</h1>
+		<div class="prose">
+			<dl class="argument">
+				<high-light group="effects">
+					<dt>
+						<a href="#effects" class="quicklink">§</a>
+						effects
+					</dt>
+					<dd>Array of Effects to group.</dd>
+				</high-light>
+				<high-light group="options">
+					<dt>
+						<a href="#options" class="quicklink">§</a>
+						options
+					</dt>
+					<dd>
+						<p>Similar Object properties as <a class="inline" hreffy="/effects/group/options/">GroupEffectOptions</a>.</p>
+						<p>Recommended not to use this argument until L2 spec has been worked out.</p>
+					</dd>
+				</high-light>
+			</dl>
+		</div>
+		<div class="code">
+			<code class="block javascript spec">
+				<high-light group="frames">var effects = [Keyframe, Group, Sequence /*, ... */];</high-light>
+				<high-light group="options">var options = Number || <a class="inline" hreffy="/effects/group/options/">GroupEffectOptions</a>;</high-light>
+			</code>
+			<code class="block javascript">
+				/// Create a dummy animation
+				var target = document.querySelector('div.target');
+				var frames = [
+					{ opacity: 0 },
+					{ opacity: 0.7 }
+				];
+				var keyframe = new KeyframeEffect(target, frames, 800);
+				
+				var sequence = new Sequence([
+					new KeyframeEffect(document.querySelector('div.foo'), [ { left: '0%' }, { left: '100%' } ], 500),
+					new KeyframeEffect(document.querySelector('div.bar'), [ { left: '20%' }, { left: '80%' } ], 500)
+				]);
+				
+				/// Group our effects together...
+				<high-light group="effects">var effects = [keyframe, sequence];</high-light>
+				var group = new GroupEffect(<high-light group="effects">effects</high-light>);
+				
+
+				/// Play the group of effects
+				var player = document.timeline.play(group);
+			</code>
+		</div>
+	</div>
+</article>

@@ -1,0 +1,82 @@
+---
+layout: article
+---
+<article id="why">
+	<div class="mirror">
+		<h1>
+			Animation
+			<a href="#why" class="quicklink">§</a>
+		</h1>
+		<div class="prose">
+			<p>
+				An Animation is like a video player.<br>
+				Play, pause, seek, speed it up, slowmo and even play it in reverse.
+			</p>
+			<p>
+				Associated with a <a class="inline" href="/core/timeline/">Timeline</a>, which it uses like a clock, to figure out what time it is.
+			</p>
+			<p>
+				You can give an Animation "effects", for example <a class="inline" href="/effects/keyframe/">KeyframeEffect</a>.
+			</p>
+		</div>
+		<div class="code">
+			<code class="block javascript spec">
+				new Animation(<high-light group="effect">effect</high-light>, <high-light group="timeline">timeline</high-light>);
+			</code>
+		</div>
+	</div>
+</article>
+<article id="how">
+	<div class="mirror">
+		<h1>
+			Arguments
+			<a href="#how" class="quicklink">§</a>
+		</h1>
+		<div class="prose">
+			<dl class="argument">
+				<high-light group="effect">
+					<dt>
+						<a href="#effect" class="quicklink">§</a>
+						effect
+					</dt>
+					<dd>
+						<p>An effect is an item it plays in its' timing hierarchy.</p>
+						<p>You can use <a class="inline" href="/effects/keyframe/">KeyframeEffect</a>, <a class="inline" href="/effects/group/">GroupEffect</a> and <a class="inline" href="/effects/sequence/">SequenceEffect</a>.</p>
+					</dd>
+				</high-light>
+
+				<high-light group="timeline">
+					<dt>
+						<a href="#timeline" class="quicklink">§</a>
+						timeline
+					</dt>
+					<dd>
+						<p>The source of time it uses.</p>
+						<p>Could be a clock, random values, scroll position or even input from a touch gesture</p>
+						<p>Currently Level 1 Web Animations only specifies the global clock, document.timeline, but in the future we should be able to have custom timelines.</p>
+					</dd>
+				</high-light>
+			</dl>
+		</div>
+		<div class="code">
+			<code class="block javascript spec">
+				<high-light group="effect">var effect = KeyframeEffect || GroupEffect || SequenceEffect || null;</high-light>
+				<high-light group="timeline">var timeline = AnimationTimeline || null;</high-light>
+			</code>
+<!-- 			<code class="block javascript">
+				<high-light group="frames">var frames = [
+					{ opacity: 0 },
+					{ opacity: 1 }
+				];</high-light>
+
+
+				<high-light group="options">var options = {
+					duration: 2000, // in ms
+					delay: 400, // in ms
+					fill: 'forwards', // keeps css styles at end of anim
+					easing: 'ease-out' // smooth out at end
+				};</high-light>
+			</code> -->
+		</div>
+	</div>
+</article>

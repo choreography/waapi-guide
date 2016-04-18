@@ -1,0 +1,85 @@
+---
+layout: article
+---
+<article id="why">
+	<div class="mirror">
+		<h1>
+			SequenceEffect
+			<a href="#why" class="quicklink">§</a>
+		</h1>
+		<div class="prose">
+			<p>
+				Groups other effects together but aligns them so they play one after another, after each one has completed all its' iterations.
+			</p>
+			<p>
+				Can be nested within other Sequences and <a class="inline" href="/effects/group/">Groups</a>.<br>
+				Can also nest <a class="inline" href="/effects/keyframe/">Keyframes</a>.
+			</p>
+		</div>
+		<div class="code">
+			<code class="block javascript spec">
+				new SequenceEffect(<high-light group="effects">effects</high-light>, <high-light group="options">options</high-light>);
+			</code>
+		</div>
+	</div>
+
+	<div class="notice">
+		<p>
+			SequenceEffects have been removed from Level 1 of Web Animations and are planned to be reintroduced in Level 2 of the spec.<br>
+			However they are implemented in the Web Animations polyfill.<br>
+			I would recommend to be careful and use this without the options argument until L2 is drafted to work out the quirks.
+		</p>
+	</div>
+</article>
+<article id="how">
+	<div class="mirror">
+		<h1>
+			Arguments
+			<a href="#how" class="quicklink">§</a>
+		</h1>
+		<div class="prose">
+			<dl class="argument">
+				<high-light group="effects">
+					<dt>
+						<a href="#effects" class="quicklink">§</a>
+						effects
+					</dt>
+					<dd>Array of Effects to sequence.</dd>
+				</high-light>
+				<high-light group="options">
+					<dt>
+						<a href="#options" class="quicklink">§</a>
+						options
+					</dt>
+					<dd>
+						<p>Similar Object properties as <a class="inline" hreffy="/effects/sequence/options/">SequenceEffectOptions</a>.</p>
+						<p>Recommended not to use this argument until L2 spec has been worked out.</p>
+					</dd>
+				</high-light>
+			</dl>
+		</div>
+		<div class="code">
+			<code class="block javascript spec">
+				<high-light group="frames">var effects = [Keyframe, Group, Sequence /*, ... */];</high-light>
+				<high-light group="options">var options = Number || <a class="inline" hreffy="/effects/sequence/options/">SequenceEffectOptions</a> || null;</high-light>
+			</code>
+			<code class="block javascript">
+				/// Create some example animation effects
+				var foo = new KeyframeEffect(document.querySelector('div.foo'), [ { left: '0%' }, { left: '100%' } ], 500);
+				var bar = new KeyframeEffect(document.querySelector('div.bar'), [ { left: '20%' }, { left: '80%' } ], 500);
+				var group = new GroupEffect([
+					new KeyframeEffect(document.querySelector('span.hello'), [ { fontSize: '10px' }, { fontSize: '18px' } ], 300),
+					new KeyframeEffect(document.querySelector('span.world'), [ { fontSize: '8px' }, { fontSize: '18px' } ], 300)
+				]);
+				
+				/// Sequence our effects together...
+				<high-light group="effects">var effects = [foo, bar, group];</high-light>
+				var sequence = new Sequence(<high-light group="effects">effects</high-light>);
+				
+				
+				/// Play our sequence of effects
+				var player = document.timeline.play(sequence);
+			</code>
+		</div>
+	</div>
+</article>
