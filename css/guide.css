@@ -682,6 +682,7 @@ article h1 {
 }
 
 article a.quicklink {
+	position: relative;
 	display: inline-block;
 	padding: .25em .75em;
 	margin: -.25em -.75em;
